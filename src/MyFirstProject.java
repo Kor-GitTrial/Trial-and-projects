@@ -202,6 +202,40 @@ import java.util.*;
 
        String exitChoice;
 
+       // This returns a row and a column...so like it finds the item and returns the index of that item
+       int[] findItem(String input, String[][] items) {
+           int cols = items[0].length;
+           try {
+               int n = Integer.parseInt(input);
+               if (n >= 1 && n <= items.length * cols) {
+                   return new int[]{(n - 1) / cols, (n - 1) % cols};
+               }
+           } catch (NumberFormatException e) {
+               // Not there? NO PROBLEMO cuz this is the fall through..which says that there is a problem..
+           }
+           for (int i = 0; i < items.length; i++) {
+               for (int j = 0; j < items[i].length; j++) {
+                   if (items[i][j].toLowerCase().contains(input)) {
+                       return new int[]{i, j};
+                   }
+               }
+           }
+           return null;
+       }
+
+
+
+       void printItem(String[][] names, String[][] tiers, double[][] prices,
+                      double[][] magDef, double[][] phyDef, int r, int c) {
+           System.out.println("Selected \"" + names[r][c] + "\"");
+           System.out.println("Price = " + prices[r][c]);
+           System.out.println("Tier = " + tiers[r][c]);
+           System.out.println("Magic defence = " + magDef[r][c] * 100 + "%");
+           System.out.println("Physical defence = " + phyDef[r][c] * 100 + "%");
+       }
+
+
+
        public void shopMageRobe() {
            Scanner sc = new Scanner(System.in);
 
@@ -216,119 +250,20 @@ import java.util.*;
            shopWhile:
            while (true) {
                String robeChoice = sc.nextLine().toLowerCase().trim();
-               if (robeChoice.contains("1") || robeChoice.contains("magic imbued")) {
-                   selectedRobe = mageRobe[0][0];
-                   robePrice = mageRobePrices[0][0];
-                   System.out.println("Selected \"" + mageRobe[0][0] + "\" ");
-                   System.out.println("Price = " + mageRobePrices[0][0]);
-                   System.out.println("Tier = " + tierMageRobe[0][0]);
-                   System.out.println("Magic defence = " + mageRobeMagDef[0][0] * 100 + "%");
-                   System.out.println("Physical defence = " + mageRobePhyDef[0][0] * 100 + "%");
-                   continue;
-               } else if (robeChoice.contains("2") || robeChoice.contains("linen")) {
-                   selectedRobe = mageRobe[0][1];
-                   robePrice = mageRobePrices[0][1];
-                   System.out.println("Selected \"" + mageRobe[0][1] + "\" ");
-                   System.out.println("Price = " + mageRobePrices[0][1]);
-                   System.out.println("Tier = " + tierMageRobe[0][1]);
-                   System.out.println("Magic defence = " + mageRobeMagDef[0][1] * 100 + "%");
-                   System.out.println("Physical defence = " + mageRobePhyDef[0][1] * 100 + "%");
-                   continue;
-               } else if (robeChoice.contains("3") || robeChoice.contains("apprentice")) {
-                   selectedRobe = mageRobe[0][2];
-                   robePrice = mageRobePrices[0][2];
-                   System.out.println("Selected \"" + mageRobe[0][2] + "\" ");
-                   System.out.println("Price = " + mageRobePrices[0][2]);
-                   System.out.println("Tier = " + tierMageRobe[0][2]);
-                   System.out.println("Magic defence = " + mageRobeMagDef[0][2] * 100 + "%");
-                   System.out.println("Physical defence = " + mageRobePhyDef[0][2] * 100 + "%");
-                   continue;
-               } else if (robeChoice.contains("4") || robeChoice.contains("old")) {
-                   selectedRobe = mageRobe[1][0];
-                   robePrice = mageRobePrices[1][0];
-                   System.out.println("Selected \"" + mageRobe[1][0] + "\" ");
-                   System.out.println("Price = " + mageRobePrices[1][0]);
-                   System.out.println("Tier = " + tierMageRobe[1][0]);
-                   System.out.println("Magic defence = " + mageRobeMagDef[1][0] * 100 + "%");
-                   System.out.println("Physical defence = " + mageRobePhyDef[1][0] * 100 + "%");
-                   continue;
-               } else if (robeChoice.contains("5") || robeChoice.contains("new")) {
-                   selectedRobe = mageRobe[1][1];
-                   robePrice = mageRobePrices[1][1];
-                   System.out.println("Selected \"" + mageRobe[1][1] + "\" ");
-                   System.out.println("Price = " + mageRobePrices[1][1]);
-                   System.out.println("Tier = " + tierMageRobe[1][1]);
-                   System.out.println("Magic defence = " + mageRobeMagDef[1][1] * 100 + "%");
-                   System.out.println("Physical defence = " + mageRobePhyDef[1][1] * 100 + "%");
-                   continue;
-               } else if (robeChoice.contains("6") || robeChoice.contains("testament")) {
-                   selectedRobe = mageRobe[1][2];
-                   robePrice = mageRobePrices[1][2];
-                   System.out.println("Selected \"" + mageRobe[1][2] + "\" ");
-                   System.out.println("Price = " + mageRobePrices[1][2]);
-                   System.out.println("Tier = " + tierMageRobe[1][2]);
-                   System.out.println("Magic defence = " + mageRobeMagDef[1][2] * 100 + "%");
-                   System.out.println("Physical defence = " + mageRobePhyDef[1][2] * 100 + "%");
-                   continue;
-               } else if (robeChoice.contains("7") || robeChoice.contains("netherweave")) {
-                   selectedRobe = mageRobe[2][0];
-                   robePrice = mageRobePrices[2][0];
-                   System.out.println("Selected \"" + mageRobe[2][0] + "\" ");
-                   System.out.println("Price = " + mageRobePrices[2][0]);
-                   System.out.println("Tier = " + tierMageRobe[2][0]);
-                   System.out.println("Magic defence = " + mageRobeMagDef[2][0] * 100 + "%");
-                   System.out.println("Physical defence = " + mageRobePhyDef[2][0] * 100 + "%");
-                   continue;
-               } else if (robeChoice.contains("8") || robeChoice.contains("ember")) {
-                   selectedRobe = mageRobe[2][1];
-                   robePrice = mageRobePrices[2][1];
-                   System.out.println("Selected \"" + mageRobe[2][1] + "\" ");
-                   System.out.println("Price = " + mageRobePrices[2][1]);
-                   System.out.println("Tier = " + tierMageRobe[2][1]);
-                   System.out.println("Magic defence = " + mageRobeMagDef[2][1] * 100 + "%");
-                   System.out.println("Physical defence = " + mageRobePhyDef[2][1] * 100 + "%");
-                   continue;
-               } else if (robeChoice.contains("9") || robeChoice.contains("eclipse")) {
-                   selectedRobe = mageRobe[2][2];
-                   robePrice = mageRobePrices[2][2];
-                   System.out.println("Selected \"" + mageRobe[2][2] + "\" ");
-                   System.out.println("Price = " + mageRobePrices[2][2]);
-                   System.out.println("Tier = " + tierMageRobe[2][2]);
-                   System.out.println("Magic defence = " + mageRobeMagDef[2][2] * 100 + "%");
-                   System.out.println("Physical defence = " + mageRobePhyDef[2][2] * 100 + "%");
-                   continue;
-               } else if (robeChoice.contains("10") || robeChoice.contains("grandmaster")) {
-                   selectedRobe = mageRobe[3][0];
-                   robePrice = mageRobePrices[3][0];
-                   System.out.println("Selected \"" + mageRobe[3][0] + "\" ");
-                   System.out.println("Price = " + mageRobePrices[3][0]);
-                   System.out.println("Tier = " + tierMageRobe[3][0]);
-                   System.out.println("Magic defence = " + mageRobeMagDef[3][0] * 100 + "%");
-                   System.out.println("Physical defence = " + mageRobePhyDef[3][0] * 100 + "%");
-                   continue;
-               } else if (robeChoice.contains("11") || robeChoice.contains("crown")) {
-                   selectedRobe = mageRobe[3][1];
-                   robePrice = mageRobePrices[3][1];
-                   System.out.println("Selected \"" + mageRobe[3][1] + "\" ");
-                   System.out.println("Price = " + mageRobePrices[3][1]);
-                   System.out.println("Tier = " + tierMageRobe[3][1]);
-                   System.out.println("Magic defence = " + mageRobeMagDef[3][1] * 100 + "%");
-                   System.out.println("Physical defence = " + mageRobePhyDef[3][1] * 100 + "%");
-                   continue;
-               } else if (robeChoice.contains("12") || robeChoice.contains("veil")) {
-                   selectedRobe = mageRobe[3][2];
-                   robePrice = mageRobePrices[3][2];
-                   System.out.println("Selected \"" + mageRobe[3][2] + "\" ");
-                   System.out.println("Price = " + mageRobePrices[3][2]);
-                   System.out.println("Tier = " + tierMageRobe[3][2]);
-                   System.out.println("Magic defence = " + mageRobeMagDef[3][2] * 100 + "%");
-                   System.out.println("Physical defence = " + mageRobePhyDef[3][2] * 100 + "%");
-                   continue;
-               } else if (robeChoice.contains("101") || robeChoice.contains("exit")) {
+
+               if (robeChoice.equals("101") || robeChoice.equals("exit")) {
                    selectedRobe = "Not Selected.";
                    robePrice = 0;
                    System.out.println("You have exited the shop!");
-                   break shopWhile;
+                   break;
+               }
+
+               int[] pick = findItem(robeChoice, mageRobe);
+               if (pick != null) {
+                   selectedRobe = mageRobe[pick[0]][pick[1]];
+                   robePrice = mageRobePrices[pick[0]][pick[1]];
+                   printItem(mageRobe, tierMageRobe, mageRobePrices,
+                           mageRobeMagDef, mageRobePhyDef, pick[0], pick[1]);
                } else {
                    selectedRobe = "Not Selected.";
                    robePrice = 0;
@@ -1187,7 +1122,7 @@ import java.util.*;
            else {
                System.out.println("You have chosen to not open the shop");
 
-           }C
+           }
        }
 
        public static void main(String[] args)
