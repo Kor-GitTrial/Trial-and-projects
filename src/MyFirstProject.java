@@ -301,170 +301,66 @@ import java.util.*;
        }
 
 
-        String selectedBoot = " ";
-        public void shopMageBoots()
-        {
-       Scanner sc = new Scanner(System.in);
+       String selectedBoot = " ";
 
-       int serialNum = 0;
+       public void shopMageBoots() {
+           Scanner sc = new Scanner(System.in);
+
+           int serialNum = 0;
            for (int i = 0; i < mageBoot.length; i++) {
-           for (int j = 0; j < mageBoot[i].length; j++) {
-               ++serialNum;
-               System.out.println(serialNum + ".  " + mageBoot[i][j] + "  ---->  " + mageBootPrices[i][j] + " Gold.");
-           }
-       }
-
-       shopWhile:
-               while (true) {
-           String bootChoice = sc.nextLine().toLowerCase().trim();
-           if (bootChoice.contains("1") || bootChoice.contains("magic imbued")) {
-               selectedBoot = mageBoot[0][0];
-               magBootPrice = mageBootPrices[0][0];
-               System.out.println("Selected \"" + mageBoot[0][0] + "\" ");
-               System.out.println("Price = " + mageBootPrices[0][0]);
-               System.out.println("Tier = " + tierMageBoot[0][0]);
-               System.out.println("Magic defence = " + mageBootMagDef[0][0] * 100 + "%");
-               System.out.println("Physical defence = " + mageBootPhyDef[0][0] * 100 + "%");
-               continue;
-           } else if (bootChoice.contains("2") || bootChoice.contains("linen")) {
-               selectedBoot = mageBoot[0][1];
-               magBootPrice = mageBootPrices[0][1];
-               System.out.println("Selected \"" + mageBoot[0][1] + "\" ");
-               System.out.println("Price = " + mageBootPrices[0][1]);
-               System.out.println("Tier = " + tierMageBoot[0][1]);
-               System.out.println("Magic defence = " + mageBootMagDef[0][1] * 100 + "%");
-               System.out.println("Physical defence = " + mageBootPhyDef[0][1] * 100 + "%");
-               continue;
-           } else if (bootChoice.contains("3") || bootChoice.contains("apprentice")) {
-               selectedBoot = mageBoot[0][2];
-               magBootPrice = mageBootPrices[0][2];
-               System.out.println("Selected \"" + mageBoot[0][2] + "\" ");
-               System.out.println("Price = " + mageBootPrices[0][2]);
-               System.out.println("Tier = " + tierMageBoot[0][2]);
-               System.out.println("Magic defence = " + mageBootMagDef[0][2] * 100 + "%");
-               System.out.println("Physical defence = " + mageBootPhyDef[0][2] * 100 + "%");
-               continue;
-           } else if (bootChoice.contains("4") || bootChoice.contains("old")) {
-               selectedBoot = mageBoot[1][0];
-               magBootPrice = mageBootPrices[1][0];
-               System.out.println("Selected \"" + mageBoot[1][0] + "\" ");
-               System.out.println("Price = " + mageBootPrices[1][0]);
-               System.out.println("Tier = " + tierMageBoot[1][0]);
-               System.out.println("Magic defence = " + mageBootMagDef[1][0] * 100 + "%");
-               System.out.println("Physical defence = " + mageBootPhyDef[1][0] * 100 + "%");
-               continue;
-           } else if (bootChoice.contains("5") || bootChoice.contains("new")) {
-               selectedBoot = mageBoot[1][1];
-               magBootPrice = mageBootPrices[1][1];
-               System.out.println("Selected \"" + mageBoot[1][1] + "\" ");
-               System.out.println("Price = " + mageBootPrices[1][1]);
-               System.out.println("Tier = " + tierMageBoot[1][1]);
-               System.out.println("Magic defence = " + mageBootMagDef[1][1] * 100 + "%");
-               System.out.println("Physical defence = " + mageBootPhyDef[1][1] * 100 + "%");
-               continue;
-           } else if (bootChoice.contains("6") || bootChoice.contains("testament")) {
-               selectedBoot = mageBoot[1][2];
-               magBootPrice = mageBootPrices[1][2];
-               System.out.println("Selected \"" + mageBoot[1][2] + "\" ");
-               System.out.println("Price = " + mageBootPrices[1][2]);
-               System.out.println("Tier = " + tierMageBoot[1][2]);
-               System.out.println("Magic defence = " + mageBootMagDef[1][2] * 100 + "%");
-               System.out.println("Physical defence = " + mageBootPhyDef[1][2] * 100 + "%");
-               continue;
-           } else if (bootChoice.contains("7") || bootChoice.contains("netherweave")) {
-               selectedBoot = mageBoot[2][0];
-               magBootPrice = mageBootPrices[2][0];
-               System.out.println("Selected \"" + mageBoot[2][0] + "\" ");
-               System.out.println("Price = " + mageBootPrices[2][0]);
-               System.out.println("Tier = " + tierMageBoot[2][0]);
-               System.out.println("Magic defence = " + mageBootMagDef[2][0] * 100 + "%");
-               System.out.println("Physical defence = " + mageBootPhyDef[2][0] * 100 + "%");
-               continue;
-           } else if (bootChoice.contains("8") || bootChoice.contains("ember")) {
-               selectedBoot = mageBoot[2][1];
-               magBootPrice = mageBootPrices[2][1];
-               System.out.println("Selected \"" + mageBoot[2][1] + "\" ");
-               System.out.println("Price = " + mageBootPrices[2][1]);
-               System.out.println("Tier = " + tierMageBoot[2][1]);
-               System.out.println("Magic defence = " + mageBootMagDef[2][1] * 100 + "%");
-               System.out.println("Physical defence = " + mageBootPhyDef[2][1] * 100 + "%");
-               continue;
-           } else if (bootChoice.contains("9") || bootChoice.contains("eclipse")) {
-               selectedBoot = mageBoot[2][2];
-               magBootPrice = mageBootPrices[2][2];
-               System.out.println("Selected \"" + mageBoot[2][2] + "\" ");
-               System.out.println("Price = " + mageBootPrices[2][2]);
-               System.out.println("Tier = " + tierMageBoot[2][2]);
-               System.out.println("Magic defence = " + mageBootMagDef[2][2] * 100 + "%");
-               System.out.println("Physical defence = " + mageBootPhyDef[2][2] * 100 + "%");
-               continue;
-           } else if (bootChoice.contains("10") || bootChoice.contains("grandmaster")) {
-               selectedBoot = mageBoot[3][0];
-               magBootPrice = mageBootPrices[3][0];
-               System.out.println("Selected \"" + mageBoot[3][0] + "\" ");
-               System.out.println("Price = " + mageBootPrices[3][0]);
-               System.out.println("Tier = " + tierMageBoot[3][0]);
-               System.out.println("Magic defence = " + mageBootMagDef[3][0] * 100 + "%");
-               System.out.println("Physical defence = " + mageBootPhyDef[3][0] * 100 + "%");
-               continue;
-           } else if (bootChoice.contains("11") || bootChoice.contains("crown")) {
-               selectedBoot = mageBoot[3][1];
-               magBootPrice = mageBootPrices[3][1];
-               System.out.println("Selected \"" + mageBoot[3][1] + "\" ");
-               System.out.println("Price = " + mageBootPrices[3][1]);
-               System.out.println("Tier = " + tierMageBoot[3][1]);
-               System.out.println("Magic defence = " + mageBootMagDef[3][1] * 100 + "%");
-               System.out.println("Physical defence = " + mageBootPhyDef[3][1] * 100 + "%");
-               continue;
-           } else if (bootChoice.contains("12") || bootChoice.contains("veil")) {
-               selectedBoot = mageBoot[3][2];
-               magBootPrice = mageBootPrices[3][2];
-               System.out.println("Selected \"" + mageBoot[3][2] + "\" ");
-               System.out.println("Price = " + mageBootPrices[3][2]);
-               System.out.println("Tier = " + tierMageBoot[3][2]);
-               System.out.println("Magic defence = " + mageBootMagDef[3][2] * 100 + "%");
-               System.out.println("Physical defence = " + mageBootPhyDef[3][2] * 100 + "%");
-               continue;
-           } else if (bootChoice.contains("101") || bootChoice.contains("exit")) {
-               selectedBoot = "Not Selected.";
-               magBootPrice = 0;
-               System.out.println("You have exited the shop!");
-               break shopWhile;
-           } else {
-               selectedBoot = "Not Selected.";
-               magBootPrice = 0;
-               System.out.println("Not an item in the shop!");
-               System.out.println("Do you wish to exit?");
-               exitChoice = sc.nextLine().toLowerCase().trim();
-               if (exitChoice.contains("exit")) {
-                   exitChoice = "Exited.";
-                   System.out.println("You have exited.");
-               } else {
-                   System.out.println("You have chosen to not exit.");
+               for (int j = 0; j < mageBoot[i].length; j++) {
+                   ++serialNum;
+                   System.out.println(serialNum + ".  " + mageBoot[i][j] + "  ---->  " + mageBootPrices[i][j] + " Gold.");
                }
            }
-       }
+
+           while (true) {
+               String bootChoice = sc.nextLine().toLowerCase().trim();
+
+               if (bootChoice.equals("101") || bootChoice.equals("exit")) {
+                   selectedBoot = "Not Selected.";
+                   magBootPrice = 0;
+                   System.out.println("You have exited the shop!");
+                   break;
+               }
+
+               int[] pick = findItem(bootChoice, mageBoot);
+               if (pick != null) {
+                   selectedBoot = mageBoot[pick[0]][pick[1]];
+                   magBootPrice = mageBootPrices[pick[0]][pick[1]];
+                   printItem(mageBoot, tierMageBoot, mageBootPrices,
+                           mageBootMagDef, mageBootPhyDef, pick[0], pick[1]);
+               } else {
+                   selectedBoot = "Not Selected.";
+                   magBootPrice = 0;
+                   System.out.println("Not an item in the shop!");
+                   System.out.println("Do you wish to exit?");
+                   exitChoice = sc.nextLine().toLowerCase().trim();
+                   if (exitChoice.contains("exit")) {
+                       exitChoice = "Exited.";
+                       System.out.println("You have exited.");
+                   } else {
+                       System.out.println("You have chosen to not exit.");
+                   }
+               }
+           }
 
            if (selectedBoot.equals("Not Selected.") || exitChoice.equals("Exited.")) {
-           System.out.println("You did not choose anything..? Okay then.");
-       } else {
-           if(gold  >= magBootPrice){
-               leftGold = gold - magBootPrice;
-               System.out.println("Would you like to buy \"" + selectedBoot + "\"?");
-               System.out.printf("You will have: %,.1f left over\n", leftGold);
-               buyOrNah = sc.nextLine().toLowerCase().trim();
-               if(buyOrNah.contains("buy")||buyOrNah.contains("yes"))
-               {
-                   leftGold = gold;
-                   System.out.println("You have bought \"" +selectedBoot+ "\"!");
-                   System.out.println("You have " + gold + "left.");
+               System.out.println("You did not choose anything..? Okay then.");
+           } else {
+               if (gold >= magBootPrice) {
+                   leftGold = gold - magBootPrice;
+                   System.out.println("Would you like to buy \"" + selectedBoot + "\"?");
+                   System.out.printf("You will have: %,.1f left over\n", leftGold);
+                   buyOrNah = sc.nextLine().toLowerCase().trim();
+                   if (buyOrNah.contains("buy") || buyOrNah.contains("yes")) {
+                       leftGold = gold;
+                       System.out.println("You have bought \"" + selectedBoot + "\"!");
+                       System.out.println("You have " + gold + "left.");
+                   }
                }
-
            }
        }
-
-
-   }
 
 
 
